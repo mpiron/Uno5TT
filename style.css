@@ -1,0 +1,60 @@
+body {
+    font-family: Tahoma;
+    color: #fc2;
+    background-color: #222;
+}
+
+img.carte {
+    height: 60px;
+    border-radius: 3px;
+}
+
+img.cartept {
+    height: 20px;
+    border-radius: 1px;
+}
+img.cartegd {
+    height: 80px;
+    border-radius: 5px;
+}
+
+#container,
+nav,
+footer {
+    max-width: 800px;
+    margin: auto;
+    background-color: #444;
+    padding: 5px 20px;
+}
+
+button {
+    color: #222;
+    display: block;
+    width: 150px;
+    min-height: 50px;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+a {
+    color: #fa4;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #666;
+}
+
+/* création des bordures entre le container et le reste :*/
+#container {
+    border-top: 3px #fc2 solid;
+    border-bottom: 3px #fc2 solid;
+}
+
+nav {
+    border-radius: 10px 10px 0px 0px;
+}
+
+footer {
+    border-radius: 0px 0px 10px 10px;
+}

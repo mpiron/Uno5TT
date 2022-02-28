@@ -115,5 +115,6 @@ if (isset($_SESSION['mainJoueur1']))
 {$mainJoueur1=$_SESSION['mainJoueur1'];}
 if (isset($_SESSION['mainJoueur2']))
 {$mainJoueur2=$_SESSION['mainJoueur2'];}
-
+if (isset($_SESSION['defausse']))
+{$defausse=$_SESSION['defausse'];}
 ?>

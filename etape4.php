@@ -1,7 +1,14 @@
 <!-- étape4.php -->
 <!-- inclusion des variables  -->
 <?php
-session_start(); //donne acces à la supervariable $_SESSION qui persiste entre 2 requêtes PHP
+if (isset($_POST['session'])){
+    if ($_POST['session']='debut'){session_start(); }
+  //donne acces à la supervariable $_SESSION qui persiste entre 2 requêtes PHP
+    if ($_POST['session']='reboot'){
+        session_destroy();
+        $_SESSION=[];
+        session_start(); }
+}
 if (!isset($_SESSION['deckDepart']))
     {include_once('variables_1.php');
     shuffle($cartes) ;
@@ -9,6 +16,7 @@ if (!isset($_SESSION['deckDepart']))
     }            
 $deckDepart=$_SESSION['deckDepart'];
 $deck=$deckDepart;
+/*tout ce qui est inscrit ci dessous ira par la suite dans le fichier variables.php*/
 ?>
 
 <!DOCTYPE html>
@@ -28,31 +36,41 @@ $deck=$deckDepart;
     <!-- inclusion de l'entête du site -->
     <?php include_once('header.php'); ?>
     <div id="container">
-        <h1>Etape 4 en utilisant une session!</h1>
-        les étapes:
+        <h1>Etape 4 </h1>
+        <h2>
+      Découverte de la fonction session_start()<br> et de la variable superglobale $_SESSION!
+    <br> Nous n'avons pas récupéré les cartes de l'étapes 3</h2>
+       les étapes:
         <ol>
-            <li>Le deck mélangé : $deckDepart=$_SESSION['deck']</li>
+            <li>Le deck mélangé:</li>
+            <?php  
+            shuffle($cartes) ;?>
 
-
-            <?php foreach($deck as $carte) : ?>
+            <?php foreach($cartes as $carte) : ?>
             <img class="cartept" src="cartes/<?php echo $carte['image']; ?>" alt="<?php echo $carte['nom']; ?>">
             <?php endforeach ?>
 
 
-            <li>Distribuer les deux mains </li>
+            <li>Distribuer les deux mains</li>
             <?php  
          
             
-            $mainJoueur1=[]; $mainJoueur2=[] ;
-            for ($i=0;$i<7;$i++){ $mainJoueur1=array_merge($mainJoueur1,array_splice($deck,0,1));
-                $mainJoueur2=array_merge($mainJoueur2,array_splice($deck,0,1));} ?>
+            $mainJoueur1=[]; $mainJoueur2=[] ;$defausse=[];
+            for ($i=0;$i<7;$i++){ $mainJoueur1=array_merge($mainJoueur1,array_splice($cartes,0,1));
+                $mainJoueur2=array_merge($mainJoueur2,array_splice($cartes,0,1));}
+                $defausse=array_merge($defausse,array_splice($cartes,0,1)); ?>
+            
             <ul>
-                <li>Main joueur 1 = $mainJoueur1</li>
+                <li>Main joueur 1</li>
                 <?php foreach($mainJoueur1 as $carte) : ?>
                 <img class="cartegd" src="cartes/<?php echo $carte['image']; ?>" alt="<?php echo $carte['nom']; ?>">
                 <?php endforeach ?>
-                <li>Main joueur 2 = $mainJoueur2</li>
+                <li>Main joueur 2</li>
                 <?php foreach($mainJoueur2 as $carte) : ?>
+                <img class="cartegd" src="cartes/<?php echo $carte['image']; ?>" alt="<?php echo $carte['nom']; ?>">
+                <?php endforeach ?>
+                <li>Défausse</li>
+                <?php foreach($defausse as $carte) : ?>
                 <img class="cartegd" src="cartes/<?php echo $carte['image']; ?>" alt="<?php echo $carte['nom']; ?>">
                 <?php endforeach ?>
             </ul>
@@ -62,13 +80,15 @@ $deck=$deckDepart;
             <?php endforeach ?>
 
         </ol>
-        <form action="index.php" method="post">
-            <button type="submit">retour à l'étape 1</button>
+        <form action="etape4.php" method="post">
+            <button type="submit">réinitialiser via étape 4</button>
         </form>
 
         <form action="etape5.php" method="post">
-
-            <button type="submit">Passer à l'étape 5</button>
+            <button type="submit">Passer à l'étape 5 en conservant la distribution</button>
+        </form>
+        <form action="etape8.php" method="post">
+            <button type="submit">Accès direct étape 8</button>
         </form>
 
         Aide à l'étape ( <a target="_blank"
@@ -80,10 +100,16 @@ $deck=$deckDepart;
             <li>$_SESSION['pioche']</li>
             <li>$_SESSION['mainJoueur1']</li>
             <li>$_SESSION['mainJoueur2'] </li>
+            <li>$_SESSION['defausse'] </li>
         </ol>
-        <?php  $_SESSION['pioche']=$deck;
+        <?php  
+ /*       Je réinitialise la variable Session si elle existe déjà */
+        session_destroy();
+        session_start();
+        $_SESSION['pioche']=$deck;
         $_SESSION['mainJoueur1']=$mainJoueur1;
         $_SESSION['mainJoueur2']=$mainJoueur2;
+        $_SESSION['defausse']=$defausse;
          ?>
     </div>
     <!-- inclusion du bas de page du site -->

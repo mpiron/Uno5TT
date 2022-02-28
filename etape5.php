@@ -1,8 +1,13 @@
 <!-- index.php -->
 <!-- inclusion des variables et fonctions -->
 <?php
-session_start(); //donne acces à la supervariable $_SESSION qui persiste entre 2 requêtes PHP
-  include_once('variables.php');        
+  session_start(); //donne acces à la supervariable $_SESSION qui persiste entre 2 requêtes PHP
+  include_once('variables.php');   
+  /*    
+grâce au fichier variables, 
+$deckDepart=$_SESSION['deckDepart']
+$pioche=$_SESSION['pioche'] ; 
+$mainJoueur1=$_SESSION['mainJoueur1'] et $mainJoueur2=$_SESSION['mainJoueur2']*/
 ?>
 
 <!DOCTYPE html>
@@ -40,8 +45,12 @@ session_start(); //donne acces à la supervariable $_SESSION qui persiste entre 
                 <?php foreach($mainJoueur1 as $carte) : ?>
                 <img class="cartegd" src="cartes/<?php echo $carte['image']; ?>" alt="<?php echo $carte['nom']; ?>">
                 <?php endforeach ?>
-                <li>Main joueur 2 = $mainJoueur2</li>
+             <li>Main joueur 2= $mainJoueur2</li>
                 <?php foreach($mainJoueur2 as $carte) : ?>
+                <img class="cartegd" src="cartes/<?php echo $carte['image']; ?>" alt="<?php echo $carte['nom']; ?>">
+                <?php endforeach ?>
+                <li>Défausse= $defausse</li>
+                <?php foreach($defausse as $carte) : ?>
                 <img class="cartegd" src="cartes/<?php echo $carte['image']; ?>" alt="<?php echo $carte['nom']; ?>">
                 <?php endforeach ?>
             </ul>
@@ -51,12 +60,11 @@ session_start(); //donne acces à la supervariable $_SESSION qui persiste entre 
             <?php endforeach ?>
 
         </ol>
-        <form action="index.php" method="post">
-            <button type="submit">retour à l'étape 1</button>
+    <form action="etape5.php" method="post">
+            <button type="submit">recommencer Etape 5</button>
         </form>
 
         <form action="etape6.php" method="post">
-
             <button type="submit">étape 6: piocher des cartes</button>
         </form>
 
@@ -64,16 +72,7 @@ session_start(); //donne acces à la supervariable $_SESSION qui persiste entre 
             href="https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql/4239476-conservez-des-donnees-grace-aux-sessions-et-aux-cookies">gérer
             les sessions</a>
         )
-        <h3>On termine en récupérant les variables de sessions</h3>
-        <ol>
-            <li>$_SESSION['pioche']</li>
-            <li>$_SESSION['mainJoueur1']</li>
-            <li>$_SESSION['mainJoueur2'] </li>
-        </ol>
-        <?php  $_SESSION['pioche']=$pioche;
-        $_SESSION['mainJoueur1']=$mainJoueur1;
-        $_SESSION['mainJoueur2']=$mainJoueur2;
-         ?>
+
     </div>
     <!-- inclusion du bas de page du site -->
     <?php include_once('footer.php'); ?>

@@ -1,7 +1,7 @@
 <!-- index.php -->
-<!-- inclusion des variables -->
+<!-- inclusion des variables et fonctions -->
         <?php
-            include_once('variables_1.php');
+            include_once('variables.php');
         ?>
         
 <!DOCTYPE html>
@@ -27,6 +27,9 @@
 
         <form action="etape2.php" method="post">
             <button type="submit" >Passer à l'étape 2</button>
+        </form>
+        <form action="etape4.php" method="post">
+            <button type="submit" >Accès direct à l'étape 4</button>
         </form>
     </div>
     <!-- inclusion du bas de page du site -->

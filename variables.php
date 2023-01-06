@@ -1,7 +1,5 @@
 <?php
 // variables.php
-if (!isset($_SESSION['deckDepart']))
-    {  
 $cartes = [
 ['image' => 'jaune01.jpg','valeur'=> 1, 'couleur'=> 'jaune', 'nom'=>'1 jaune'],
 ['image' => 'jaune01.jpg','valeur'=> 1, 'couleur'=> 'jaune', 'nom'=>'1 jaune'],
@@ -103,18 +101,5 @@ $cartes = [
 ['image' => 'jocker01.jpg','valeur'=> 13, 'couleur'=> 'jocker', 'nom'=>'changement'],
 ['image' => 'jocker02.jpg','valeur'=> 14, 'couleur'=> 'jocker', 'nom'=>'Jocker +4'],
 ['image' => 'jocker02.jpg','valeur'=> 14, 'couleur'=> 'jocker', 'nom'=>'Jocker +4'],];
-$_SESSION['deckDepart']=$cartes;
-shuffle($_SESSION['deckDepart']) ;
-}   
-    
-if (isset($_SESSION['deckDepart']))
-{$deckDepart=$_SESSION['deckDepart'];}
-if (isset($_SESSION['pioche']))
-{$pioche=$_SESSION['pioche'];}
-if (isset($_SESSION['mainJoueur1']))
-{$mainJoueur1=$_SESSION['mainJoueur1'];}
-if (isset($_SESSION['mainJoueur2']))
-{$mainJoueur2=$_SESSION['mainJoueur2'];}
-if (isset($_SESSION['defausse']))
-{$defausse=$_SESSION['defausse'];}
+
 ?>

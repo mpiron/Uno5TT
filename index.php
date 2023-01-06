@@ -20,6 +20,7 @@ include_once('variables.php');
 
     <!-- inclusion de l'entête du site -->
     <?php include_once('header.php'); ?>
+
     <div id="container">
         <h1>Présentation des cartes</h1>
 
@@ -27,15 +28,6 @@ include_once('variables.php');
             <img class="carte" src="cartes/<?php echo $carte['image']; ?>" alt="<?php echo $carte['nom']; ?>">
         <?php endforeach ?>
 
-        <form action="etape2.php" method="post">
-            <button type="submit">Passer à l'étape 2</button>
-        </form>
-        <form action="etape4.php" method="post">
-            <button type="submit">Accès direct à l'étape 4</button>
-        </form>
-        <form action="jeu.php" method="post">
-            <button type="submit">Jouer</button>
-        </form>
     </div>
     <!-- inclusion du bas de page du site -->
     <?php include_once('footer.php'); ?>

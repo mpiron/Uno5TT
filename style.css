@@ -4,6 +4,11 @@ body {
     background-color: #222;
 }
 
+form {
+    display: inline-block;
+}
+
+/*Les images*/
 img.carte {
     height: 60px;
     border-radius: 3px;
@@ -13,6 +18,7 @@ img.cartept {
     height: 20px;
     border-radius: 1px;
 }
+
 img.cartegd {
     height: 80px;
     border-radius: 5px;

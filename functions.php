@@ -1,20 +1,30 @@
 <?php
-function piocher($joueur,$nombre){
-    if joueur==j1
-        {$mainJoueur1=array_merge($mainJoueur1,array_splice($deck,0,nombre));}
-    if joueur==j2
-        {$mainJoueur2=array_merge($mainJoueur2,array_splice($deck,0,nombre));}
+function piocher($joueur)
+{
+    if ($joueur == 'j1') {
+        $_SESSION['mainJoueur1'] = array_merge($_SESSION['mainJoueur1'], array_splice($_SESSION['pioche'], 0, 1));
+    }
+    if ($joueur == 'j2') {
+        $_SESSION['mainJoueur2'] = array_merge($_SESSION['mainJoueur2'], array_splice($_SESSION['pioche'], 0, 1));
+    }
 }
 
+function afficherCartes($listeCartes, $taille = "")
+{
+    foreach ($listeCartes as $carte) {
+        echo '<img class="carte' . $taille . '" src="cartes/' . $carte['image'] . '" alt="' . $carte['nom'] . '">';
+    }
+}
 
+function taille($listeCartes)
+///affiche le nombre de cartes
+{
+    if (sizeof($listeCartes) == 1 | sizeof($listeCartes) == 0) {
+        echo '(' . sizeof($listeCartes) . ' carte)';
+    } else {
+        echo '(' . sizeof($listeCartes) . ' cartes)';
+    }
+}
 
-if (isset($_SESSION['pioche']))
-    {if ($_SESSION['pioche']=="j1")
-        {   piocher(j1,1);
-            $_SESSION['pioche']=="/";}
-    if ($_SESSION['pioche']=="j2")
-        {   piocher(j2,1);
-            $_SESSION['pioche']=="/";}
-        }
 
 ?>

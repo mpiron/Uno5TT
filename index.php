@@ -86,33 +86,19 @@ if (isset($_GET['action'])) {
             <li>Pioche restante = $_SESSION['pioche'] <?php taille($_SESSION['pioche']); ?></li>
             <?php afficherCartes($_SESSION['pioche'], 'pt') ?>
 
+        </ol>
+        <h2>
+            <a href="https://www.delftstack.com/fr/howto/php/onclick-php/#utilisez-la-m%25C3%25A9thode-get-et-la-fonction-isset-pour-ex%25C3%25A9cuter-une-fonction-php-%25C3%25A0-partir-dun-lien">Source pour joueur</a>
+        </h2>
+        <a href='index.php?joue=joueur2'>Execute PHP Function</a>
 
-            <h2>
-                <a href="https://www.delftstack.com/fr/howto/php/onclick-php/#utilisez-la-m%25C3%25A9thode-get-et-la-fonction-isset-pour-ex%25C3%25A9cuter-une-fonction-php-%25C3%25A0-partir-dun-lien">Source pour joueur</a>
-            </h2>
-            <a href='index.php?joue=joueur2'>Execute PHP Function</a>
+        <?php if (isset($_GET['joue'])) {
+            echo ('<h1>Bravo</h1>');
+        } ?>
 
-</html>
-
-<?php if (isset($_GET['joue'])) {
-    echo ('<h1>Bravo</h1>');
-} ?>
-
-
-
-</ol>
-
-<form action="etape8.php" method="post">
-    <button type="submit">Aller à l'étape 8: rangement</button>
-</form>
-
-<p> Aide à l'étape ( <a target="_blank" href="https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql/4239476-conservez-des-donnees-grace-aux-sessions-et-aux-cookies">gérer
-        les sessions</a> )</p>
-
-
-</div>
-<!-- inclusion du bas de page du site -->
-<?php include_once('footer.php'); ?>
+    </div>
+    <!-- inclusion du bas de page du site -->
+    <?php include_once('footer.php'); ?>
 
 </body>
 
